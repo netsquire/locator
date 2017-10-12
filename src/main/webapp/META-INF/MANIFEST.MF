@@ -1,0 +1,2 @@
+Main-Class: grid.pointer.App
+Manifest-Version: 1.0
