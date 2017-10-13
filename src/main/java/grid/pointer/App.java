@@ -15,7 +15,8 @@ public class App {
 		ResourceConfig config = new ResourceConfig(Rest.class);
 		config.packages("jettyjerseytutorial");
 		ServletHolder servlet = new ServletHolder(new ServletContainer(config));
-		Integer port = Integer.valueOf(System.getenv("PORT"));
+		String PORT = System.getenv("PORT");
+		Integer port = (PORT==null)? 8080 : Integer.valueOf(PORT);
 		Server server = new Server(port);
 		ServletContextHandler context = new ServletContextHandler(server, "/*");
 		context.addServlet(servlet, "/*");
