@@ -2,6 +2,7 @@ package grid.pointer.up;
 
 import java.util.Map;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -43,7 +44,9 @@ public class Rest {
 	@GET
 	@Path("/{id}/ip")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String getIp(@PathParam("id") String id) {		return storageService.getIp(id);}
+	public String getIp(@PathParam("id") String id) {
+		return storageService.getIp(id);
+		}
 	
 	@GET
 	@Path("/dump")
@@ -55,8 +58,23 @@ public class Rest {
 	@GET
 	@Path("/parcel")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String parcel() {		
+	public String parcelIn() {		
 		return gson.toJson(new Parcel("future", "past", "secret", "Hello, World!", null)); 
+	}
+	
+	@GET
+	@Path("/read-parcel")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String parcelOut(Parcel input) {
+		return new StringBuffer()
+				.append("From: ")
+				.append(input.getFrom())
+				.append("To: ")
+				.append(input.getTo())
+				.append("Payload: ")
+				.append(input.getPayload())
+				.toString();
 	}
 	
 	
