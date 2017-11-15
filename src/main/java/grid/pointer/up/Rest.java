@@ -52,4 +52,12 @@ public class Rest {
 		return gson.toJson(storageService.list(), new TypeToken<Map<String, String>>() {}.getType());
 	}
 	
+	@GET
+	@Path("/parcel")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String parcel() {		
+		return gson.toJson(new Parcel("future", "past", "secret", "Hello, World!", null)); 
+	}
+	
+	
 }
