@@ -8,6 +8,9 @@ public class Parcel {
 	String payload;
 	String attachment;
 	
+	public Parcel() {
+		super();
+	}
 	public String getTo() {
 		return to;
 	}
