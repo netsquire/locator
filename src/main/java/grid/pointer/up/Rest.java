@@ -49,6 +49,14 @@ public class Rest {
 	public String getIp(@PathParam("id") String id) {
 		return storageService.getIp(id);
 		}
+
+	@GET
+	@Path("/ip-json/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getIpJson(@PathParam("id") String id) {
+		return new Gson().toJson(new Ip(id, storageService.getIp(id)));
+		}
+
 	
 	@GET
 	@Path("/dump")
