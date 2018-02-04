@@ -56,25 +56,10 @@ public class Rest {
 	@GET
 	@Path("/{id}/ip/{ip}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String putIp(@PathParam("id") String id, @PathParam("ip") String ip) {
+	public String announceIp(@PathParam("id") String id, @PathParam("ip") String ip) {
 		storageService.putIp(id, ip);
-		return "OK " + id + " + " + ip;
-	}
-	
-	@GET
-	@Path("/{id}/ip")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String getIp(@PathParam("id") String id) {
-		return storageService.getIp(id);
-		}
-
-	@GET
-	@Path("/{id}/ip/json")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String getIpJson(@PathParam("id") String id) {
 		return gson.toJson(storageService.list(), new TypeToken<Map<String,String>>(){}.getType());
-		}
-
+	}
 	
 	@GET
 	@Path("/dump")
@@ -98,7 +83,7 @@ public class Rest {
 		System.out.println("Message from: "+ parcel.getFrom());
 		String ip = parcel.getPayload();
 		String id = parcel.getFrom();
-		putIp(id, ip);
+		announceIp(id, ip);
 		return new Parcel("future", "past", "digits", "Executed", null);
 
 	}
