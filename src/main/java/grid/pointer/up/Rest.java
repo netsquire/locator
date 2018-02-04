@@ -9,11 +9,20 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import grid.pointer.data.Parcel;
+import grid.pointer.data.PersonInfo;
+
+/**
+ * 
+ * TODO: move to JSON as defaults
+ * TODO: add version for updating
+ * 
+ * @author netsquire
+ *
+ */
 @Path("/")
 public class Rest {
 
@@ -21,14 +30,13 @@ public class Rest {
 	static Gson gson = new Gson();
 
 	@GET
-	//@Path("/")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String index() {	return "Head request"; }
 
 	@GET
-	@Path("/empty")
+	@Path("/version")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String emptyId() { return "Empty request";}
+	public String emptyId() { return "Version: 0.0.1";}
 
 	@GET
 	@Path("/info/{id}")
@@ -36,8 +44,18 @@ public class Rest {
 	public String getIt(@PathParam("id") String id) {		return "Information about: " + id + storageService.getIp(id); }
 
 	@GET
+	@Path("info/{id}/json")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getInfo(@PathParam("id") String id) {		
+		PersonInfo pinfo = new PersonInfo();
+		pinfo.setIp(storageService.getIp(id));
+		return gson.toJson(pinfo);
+		//return "Information about: " + id + storageService.getIp(id); 
+		}
+	
+	@GET
 	@Path("/{id}/ip/{ip}")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String putIp(@PathParam("id") String id, @PathParam("ip") String ip) {
 		storageService.putIp(id, ip);
 		return "OK " + id + " + " + ip;
@@ -51,10 +69,10 @@ public class Rest {
 		}
 
 	@GET
-	@Path("/ip-json/{id}")
+	@Path("/{id}/ip/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getIpJson(@PathParam("id") String id) {
-		return new Gson().toJson(new Ip(id, storageService.getIp(id)));
+		return gson.toJson(storageService.list(), new TypeToken<Map<String,String>>(){}.getType());
 		}
 
 	
@@ -66,10 +84,10 @@ public class Rest {
 	}
 	
 	@GET
-	@Path("/parcel")
+	@Path("/ping")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String parcelIn() {		
-		return gson.toJson(new Parcel("future", "past", "secret", "Hello, World!", null)); 
+		return gson.toJson(new Parcel("ping", "request", "from:", "to:", null)); 
 	}
 	
 	@POST

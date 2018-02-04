@@ -1,4 +1,4 @@
-package grid.pointer.up;
+package grid.pointer.data;
 
 public class Parcel {
 	

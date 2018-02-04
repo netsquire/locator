@@ -11,7 +11,7 @@ public class MemoryStore implements Holdable {
 	public String getUriString(){ return uriString;}
 
 	public MemoryStore() {	
-		locations = new HashMap<String, String>();
+		//locations = new HashMap<String, String>();
 	}
 
 	public void putIp(String id, String ip) {
