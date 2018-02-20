@@ -4,11 +4,11 @@
 
 	<groupId>grid</groupId>
 	<artifactId>pointer</artifactId>
-	<version>0.5</version>
+	<version>0.6</version>
 	<packaging>jar</packaging>
 
 	<name>pointer</name>
-	<url></url>
+	<url/>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -57,6 +57,20 @@
 	</build>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4.1208</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.gridchat</groupId>
+			<artifactId>datamodel</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

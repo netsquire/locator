@@ -1,6 +1,8 @@
 package grid.pointer.up;
 
-import java.util.Map;
+import model.Contact;
+
+import java.util.List;
 
 public interface Holdable {
 
@@ -21,7 +23,7 @@ public interface Holdable {
 	 * 
 	 * @return
 	 */
-	public Map<String, String> list();
+	public List<Contact> list();
 
 	/**
 	 * 
@@ -30,4 +32,5 @@ public interface Holdable {
 	 */
 	String getIp(String id);
 
+	public String getJsonedContactList();
 }
