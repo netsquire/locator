@@ -13,14 +13,15 @@ public class MemoryService implements Holdable {
 
 	private String uriString;
 	private static Gson gson = new Gson();
-	private static Holdable storageService = new MemoryService();
+	//private static Holdable storageService = new MemoryService();
 
 	private Set<Contact> locations = new HashSet<Contact>();
 
 	public String getUriString(){ return uriString;}
 
-	public void putIp(String id, String ip) {
+	public String putIp(String id, String ip) {
 		locations.add(new Contact(id, ip));
+		return getJsonedContactList();
 	}
 	
 	public List<Contact> list(){
@@ -32,7 +33,7 @@ public class MemoryService implements Holdable {
 	}
 
 	public String getJsonedContactList(){
-		return gson.toJson(storageService.list(), typeAsContactList());
+		return gson.toJson(list(), typeAsContactList());
 	}
 
 	private Type typeAsContactList() {

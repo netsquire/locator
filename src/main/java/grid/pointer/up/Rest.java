@@ -43,8 +43,7 @@ public class Rest {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String announceIp(@PathParam("id") String id, @PathParam("ip") String ip) {
 		// TODO: add timestamp to output
-		memoryService.putIp(id, ip);
-		return memoryService.getJsonedContactList();
+		return memoryService.putIp(id, ip);
 	}
 	
 	@GET

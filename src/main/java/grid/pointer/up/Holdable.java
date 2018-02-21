@@ -11,11 +11,10 @@ public interface Holdable {
 	String getUriString();
 
 	/**
-	 * 
-	 * @param id
+	 *  @param id
 	 * @param ip
 	 */
-	void putIp(String id, String ip);
+	String putIp(String id, String ip);
 
 	/**
 	 * 
