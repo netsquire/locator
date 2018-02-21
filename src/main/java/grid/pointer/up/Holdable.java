@@ -1,7 +1,5 @@
 package grid.pointer.up;
 
-import model.Contact;
-
 import java.util.List;
 
 public interface Holdable {

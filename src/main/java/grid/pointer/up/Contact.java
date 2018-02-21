@@ -11,7 +11,7 @@ public class Contact implements Serializable{
     private Boolean active = false;
     private Boolean connected;
 
-    public Contact(String id, String ip) {
+    Contact(String id, String ip) {
         this.id = id;
         this.ip = ip;
     }
