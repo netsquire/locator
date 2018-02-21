@@ -2,7 +2,6 @@ package grid.pointer.up;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import model.Contact;
 
 import java.lang.reflect.Type;
 import java.util.HashSet;

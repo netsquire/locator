@@ -26,15 +26,17 @@ public class Rest {
 	@GET
 	@Path("/version")
 	@Produces(MediaType.TEXT_PLAIN)
-	/**
-	 * TODO: to get version from POM
+	/*
+	  TODO: to get version from POM
 	 */
 	public String emptyId() { return "Version: 0.0.1";}
 
 	@GET
 	@Path("/info/{id}")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String getIt(@PathParam("id") String id) {		return "Information about: " + id + memoryService.getIp(id); }
+	public String getIt(@PathParam("id") String id) {
+		return "Information about: " + id + memoryService.getIp(id);
+	}
 	
 	@GET
 	@Path("/{id}/ip/{ip}")
